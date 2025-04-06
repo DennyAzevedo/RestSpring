@@ -12,12 +12,27 @@
     <artifactId>RestSpring</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>RestSpring</name>
-    <description>RestSpring</description>
+    <description>Treinamento em API Rest com Spring</description>
     <url/>
     <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
         <license/>
     </licenses>
     <developers>
+        <developer>
+            <id>Denny Azevedo</id>
+            <name>Denny Paulista Azevedo Filho</name>
+            <email>dennyazevedo@gmail.com</email>
+            <roles>
+                <role>Java Developer</role>
+                <role>Software Engineer</role>
+                <role>Software Architect</role>
+            </roles>
+        </developer>
         <developer/>
     </developers>
     <scm>
@@ -41,6 +56,7 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
