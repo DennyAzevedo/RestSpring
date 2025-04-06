@@ -16,10 +16,8 @@ public class MathController {
     // http://localhost:8080/math/sum/3/5
     @RequestMapping("/sum/{numberOne}/{numberTwo}")
     public Double sum(
-        @PathVariable("numberOne")
-        String numberOne,
-        @PathVariable("numberTwo")
-        String numberTwo
+        @PathVariable("numberOne") String numberOne,
+        @PathVariable("numberTwo") String numberTwo
     ) throws Exception {
         if(!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) {
             throw new UnsupportedMathOperationException("Please set a numeric value");
@@ -30,10 +28,8 @@ public class MathController {
     // http://localhost:8080/math/subtract/3/5
     @RequestMapping("/subtract/{numberOne}/{numberTwo}")
     public Double subtract(
-        @PathVariable("numberOne")
-        String numberOne,
-        @PathVariable("numberTwo")
-        String numberTwo
+        @PathVariable("numberOne") String numberOne,
+        @PathVariable("numberTwo") String numberTwo
     ) throws Exception {
         if(!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) {
             throw new UnsupportedMathOperationException("Please set a numeric value");
@@ -44,10 +40,8 @@ public class MathController {
     // http://localhost:8080/math/multiply/3/5
     @RequestMapping("/multiply/{numberOne}/{numberTwo}")
     public Double multiply(
-        @PathVariable("numberOne")
-        String numberOne,
-        @PathVariable("numberTwo")
-        String numberTwo
+        @PathVariable("numberOne") String numberOne,
+        @PathVariable("numberTwo") String numberTwo
     ) throws Exception {
         if(!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) {
             throw new UnsupportedMathOperationException("Please set a numeric value");
@@ -58,10 +52,8 @@ public class MathController {
     // http://localhost:8080/math/divide/3/5
     @RequestMapping("/divide/{numberOne}/{numberTwo}")
     public Double divide(
-            @PathVariable("numberOne")
-            String numberOne,
-            @PathVariable("numberTwo")
-            String numberTwo
+            @PathVariable("numberOne") String numberOne,
+            @PathVariable("numberTwo") String numberTwo
     ) throws Exception {
         if(!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) {
             throw new UnsupportedMathOperationException("Please set a numeric value");
@@ -75,10 +67,8 @@ public class MathController {
     // http://localhost:8080/math/average/3/5
     @RequestMapping("/average/{numberOne}/{numberTwo}")
     public Double average(
-        @PathVariable("numberOne")
-        String numberOne,
-        @PathVariable("numberTwo")
-        String numberTwo
+        @PathVariable("numberOne") String numberOne,
+        @PathVariable("numberTwo") String numberTwo
     ) throws Exception {
         if(!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) {
             throw new UnsupportedMathOperationException("Please set a numeric value");
@@ -89,8 +79,7 @@ public class MathController {
     // http://localhost:8080/math/squareRoot/9
     @RequestMapping("/squareroot/{numberOne}")
     public Double squareRoot(
-        @PathVariable("numberOne")
-        String numberOne
+        @PathVariable("numberOne") String numberOne
     ) throws Exception {
         if(!NumberConverter.isNumeric(numberOne)) {
             throw new UnsupportedMathOperationException("Please set a numeric value");
