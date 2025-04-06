@@ -1,1 +1,15 @@
-spring.application.name=RestSpring
+spring:
+  application:
+    name: RestSpring
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/RestSpring?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: M@109G6Gustav
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    show-sql: false 

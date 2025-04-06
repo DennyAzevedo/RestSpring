@@ -1,15 +1,25 @@
 package br.dev.md.model;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "person")
 public class Person implements Serializable {
     private static final long serialVersionUID = 1L;
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstNane;
+    @Column(name = "first_name", nullable = false, length = 80)
+    private String firstName;
+    @Column(name = "last_name", nullable = false, length = 80)
     private String lastName;
+    @Column(nullable = false, length = 100)
     private String address;
+    @Column(nullable = false, length = 6)
     private String gender;
 
     public Person() { }
@@ -22,12 +32,12 @@ public class Person implements Serializable {
         this.id = id;
     }
 
-    public String getFirstNane() {
-        return firstNane;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstNane(String firstNane) {
-        this.firstNane = firstNane;
+    public void setFirstName(String firstNane) {
+        this.firstName = firstNane;
     }
 
     public String getLastName() {
@@ -60,7 +70,7 @@ public class Person implements Serializable {
         return Objects.equals(
             getId(),
             person.getId()) && 
-            Objects.equals(getFirstNane(), person.getFirstNane()) && 
+            Objects.equals(getFirstName(), person.getFirstName()) && 
             Objects.equals(getLastName(), person.getLastName()) && 
             Objects.equals(getAddress(), person.getAddress()) 
             && Objects.equals(getGender(), person.getGender()
@@ -71,7 +81,7 @@ public class Person implements Serializable {
     public int hashCode() {
         return Objects.hash(
             getId(),
-            getFirstNane(),
+            getFirstName(),
             getLastName(),
             getAddress(),
             getGender()
