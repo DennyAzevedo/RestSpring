@@ -1,5 +1,9 @@
 package br.dev.md.services;
 
+import static br.dev.md.mapper.ObjectMapper.parseObject;
+import static br.dev.md.mapper.ObjectMapper.parseListObjects;
+
+import br.dev.md.data.dto.PersonDTO;
 import br.dev.md.model.Person;
 import br.dev.md.repository.PersonRepository;
 import br.dev.md.exception.ResourceNotFoundException;
@@ -20,26 +24,27 @@ public class PersonService {
     PersonRepository personRepository;
     
     
-    public List<Person> findAll(){
+    public List<PersonDTO> findAll(){
         logger.info("Finding all People!");
 
-        return personRepository.findAll();
+        return parseListObjects(personRepository.findAll(), PersonDTO.class);
     }
 
-    public Person findById(Long id){
+    public PersonDTO findById(Long id){
         logger.info("Finding one Person!");
         
-        return personRepository.findById(id)
+        var entity =  personRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
+        return parseObject(entity, PersonDTO.class);
     }
     
-    public Person create(Person person){
+    public PersonDTO create(PersonDTO person){
         logger.info("Creating one Person!");
-        
-        return personRepository.save(person);
+        var entity = parseObject(person, Person.class);
+        return parseObject(personRepository.save(entity), PersonDTO.class);
     }
     
-    public Person update(Person person){
+    public PersonDTO update(PersonDTO person){
         logger.info("Updating one Person!");
         Person entity = personRepository.findById(person.getId())
             .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
@@ -48,7 +53,7 @@ public class PersonService {
         entity.setAddress(person.getAddress());
         entity.setGender(person.getGender());
         
-        return personRepository.save(entity);
+        return parseObject(personRepository.save(entity), PersonDTO.class);
     }
 
     public void delete(Long id){

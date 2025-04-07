@@ -1,6 +1,6 @@
 package br.dev.md.controllers;
 
-import br.dev.md.model.Person;
+import br.dev.md.data.dto.PersonDTO;
 import br.dev.md.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -20,12 +20,12 @@ public class PersonController {
         value = "/{id}",
         produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Person findById(@PathVariable("id") Long id) {
+    public PersonDTO findById(@PathVariable("id") Long id) {
         return personService.findById(id);
     }
     
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Person> findAll() {
+    public List<PersonDTO> findAll() {
         return personService.findAll();
     }
 
@@ -33,8 +33,8 @@ public class PersonController {
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<Person> create(@RequestBody Person person) {
-        Person createPerson = personService.create(person);
+    public ResponseEntity<PersonDTO> create(@RequestBody PersonDTO person) {
+        PersonDTO createPerson = personService.create(person);
         return ResponseEntity.status(201).body(createPerson);
     }
 
@@ -42,7 +42,7 @@ public class PersonController {
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Person update(@RequestBody Person person) {
+    public PersonDTO update(@RequestBody PersonDTO person) {
         return personService.update(person);
     }
     
