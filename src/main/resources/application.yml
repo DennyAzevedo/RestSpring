@@ -11,5 +11,9 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
-    show-sql: false 
+    show-sql: false
+    open-in-view: false
+logging:
+  level:
+    root: WARN
+    br.dev.md: DEBUG

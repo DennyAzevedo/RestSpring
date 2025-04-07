@@ -8,12 +8,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
 public class PersonService {
     private final AtomicLong counter = new AtomicLong();
-    private Logger logger = Logger.getLogger(PersonService.class.getName());
+    private Logger logger = LoggerFactory.getLogger(PersonService.class.getName());
     
     @Autowired
     PersonRepository personRepository;
