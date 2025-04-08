@@ -3,7 +3,9 @@ package br.dev.md.services;
 import static br.dev.md.mapper.ObjectMapper.parseObject;
 import static br.dev.md.mapper.ObjectMapper.parseListObjects;
 
-import br.dev.md.data.dto.PersonDTO;
+import br.dev.md.data.v1.PersonDTO;
+import br.dev.md.data.v2.PersonDTOV2;
+import br.dev.md.mapper.custom.PersonMapper;
 import br.dev.md.model.Person;
 import br.dev.md.repository.PersonRepository;
 import br.dev.md.exception.ResourceNotFoundException;
@@ -22,7 +24,8 @@ public class PersonService {
     
     @Autowired
     PersonRepository personRepository;
-    
+    @Autowired
+    PersonMapper converter;
     
     public List<PersonDTO> findAll(){
         logger.info("Finding all People!");
@@ -41,9 +44,18 @@ public class PersonService {
     public PersonDTO create(PersonDTO person){
         logger.info("Creating one Person!");
         var entity = parseObject(person, Person.class);
+        
         return parseObject(personRepository.save(entity), PersonDTO.class);
     }
-    
+
+    public PersonDTOV2 createV2(PersonDTOV2 person){
+        logger.info("Creating one Person!");
+        var entity = converter.convertDTOToEntity(person);
+        
+        return converter.convertEntityToDTO(personRepository.save(entity));
+    }
+
+
     public PersonDTO update(PersonDTO person){
         logger.info("Updating one Person!");
         Person entity = personRepository.findById(person.getId())

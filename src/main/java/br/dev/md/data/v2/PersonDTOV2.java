@@ -1,19 +1,22 @@
-package br.dev.md.data.dto;
+package br.dev.md.data.v2;
 
 import br.dev.md.model.Person;
+
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
-public class PersonDTO implements Serializable {
+public class PersonDTOV2 implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
     private String firstName;
     private String lastName;
+    private Date birthDate;
     private String address;
     private String gender;
 
-    public PersonDTO() { }
+    public PersonDTOV2() { }
 
     public Long getId() {
         return id;
@@ -39,6 +42,10 @@ public class PersonDTO implements Serializable {
         this.lastName = lastName;
     }
 
+    public Date getBirthDate() { return birthDate; }
+
+    public void setBirthDate(Date birthDate) { this.birthDate = birthDate; }
+
     public String getAddress() {
         return address;
     }
@@ -57,14 +64,15 @@ public class PersonDTO implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Person person)) return false;
+        if (!(o instanceof PersonDTOV2 person)) return false;
         return Objects.equals(
                 getId(),
                 person.getId()) &&
                 Objects.equals(getFirstName(), person.getFirstName()) &&
                 Objects.equals(getLastName(), person.getLastName()) &&
-                Objects.equals(getAddress(), person.getAddress())
-                && Objects.equals(getGender(), person.getGender()
+                Objects.equals(getBirthDate(), person.getBirthDate()) &&
+                Objects.equals(getAddress(), person.getAddress()) &&
+                Objects.equals(getGender(), person.getGender()
         );
     }
 
@@ -74,6 +82,7 @@ public class PersonDTO implements Serializable {
                 getId(),
                 getFirstName(),
                 getLastName(),
+                getBirthDate(),
                 getAddress(),
                 getGender()
         );

@@ -10,7 +10,7 @@ import java.util.List;
 
 import br.dev.md.unit.mapper.mocks.MockPerson;
 import br.dev.md.model.Person;
-import br.dev.md.data.dto.PersonDTO;
+import br.dev.md.data.v1.PersonDTO;
 
 public class ObjectMapperTest {
 

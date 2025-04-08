@@ -3,6 +3,7 @@ package br.dev.md.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -17,6 +18,8 @@ public class Person implements Serializable {
     private String firstName;
     @Column(name = "last_name", nullable = false, length = 80)
     private String lastName;
+    @Column(name = "birth_date", nullable = true)
+    private Date birthDate;
     @Column(nullable = false, length = 100)
     private String address;
     @Column(nullable = false, length = 6)
@@ -24,56 +27,40 @@ public class Person implements Serializable {
 
     public Person() { }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(Long id) { this.id = id; }
 
-    public String getFirstName() {
-        return firstName;
-    }
+    public String getFirstName() { return firstName; }
 
-    public void setFirstName(String firstNane) {
-        this.firstName = firstNane;
-    }
+    public void setFirstName(String firstNane) { this.firstName = firstNane; }
 
-    public String getLastName() {
-        return lastName;
-    }
+    public String getLastName() { return lastName; }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    public void setLastName(String lastName) { this.lastName = lastName; }
 
-    public String getAddress() {
-        return address;
-    }
+    public Date getBirthDate() { return birthDate; }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    public void setBirthDate(Date birthDate) { this.birthDate = birthDate; }
+    
+    public String getAddress() { return address; }
 
-    public String getGender() {
-        return gender;
-    }
+    public void setAddress(String address) { this.address = address; }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+    public String getGender() { return gender; }
+
+    public void setGender(String gender) { this.gender = gender; }
 
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Person person)) return false;
         return Objects.equals(
-            getId(),
-            person.getId()) && 
-            Objects.equals(getFirstName(), person.getFirstName()) && 
-            Objects.equals(getLastName(), person.getLastName()) && 
-            Objects.equals(getAddress(), person.getAddress()) 
-            && Objects.equals(getGender(), person.getGender()
+            getId(), person.getId()) &&
+            Objects.equals(getFirstName(), person.getFirstName()) &&
+            Objects.equals(getLastName(), person.getLastName()) &&
+            Objects.equals(getBirthDate(), person.getBirthDate()) &&
+            Objects.equals(getAddress(), person.getAddress()) &&
+            Objects.equals(getGender(), person.getGender()
         );
     }
 
@@ -83,6 +70,7 @@ public class Person implements Serializable {
             getId(),
             getFirstName(),
             getLastName(),
+            getBirthDate(),
             getAddress(),
             getGender()
         );

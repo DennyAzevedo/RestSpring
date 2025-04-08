@@ -12,13 +12,15 @@ _Tutor: Leandro Costa_
 
 #### Tecnologias utilizadas:
 - Java 21
-- API Rest
+- API Rest & Versionamento
 - Spring Boot 3.4.4
 - Spring Web
 - Spring DevTools
-- Spring Data JPA
+- Spring Data JPA & Hibernate
 - Spring Security & JWT
-- Spring Mail
+- Spring Mail & GMail
+- HATEOAS
+- DTO & Dozer
 - Swagger
 - JasperReports & Apache POI
 - JUnit & Mockito
