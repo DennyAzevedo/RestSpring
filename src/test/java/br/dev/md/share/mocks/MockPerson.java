@@ -1,4 +1,4 @@
-package br.dev.md.unit.mapper.mocks;
+package br.dev.md.share.mocks;
 
 import java.util.ArrayList;
 import java.util.List;

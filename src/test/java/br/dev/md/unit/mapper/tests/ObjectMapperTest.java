@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 
-import br.dev.md.unit.mapper.mocks.MockPerson;
+import br.dev.md.share.mocks.MockPerson;
 import br.dev.md.model.Person;
 import br.dev.md.data.v1.PersonDTO;
 
