@@ -1,4 +1,4 @@
-package br.dev.md.request.utils;
+package br.dev.md.serialization.utils;
 
 import br.dev.md.exception.UnsupportedMathOperationException;
 import org.jetbrains.annotations.Contract;

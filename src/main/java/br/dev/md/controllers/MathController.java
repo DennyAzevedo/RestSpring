@@ -1,7 +1,7 @@
 package br.dev.md.controllers;
 
 import br.dev.md.exception.UnsupportedMathOperationException;
-import br.dev.md.request.utils.NumberConverter;
+import br.dev.md.serialization.utils.NumberConverter;
 import br.dev.md.services.MathService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
