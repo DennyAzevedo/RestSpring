@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/math")
+//@RestController
+//@RequestMapping("/math")
 public class MathController {
-    
+/*    
     private final MathService math = new MathService();
     
     // http://localhost:8080/math/sum/3/5
@@ -90,4 +90,5 @@ public class MathController {
         }
         return math.squareRoot(number);
     }
+ */
 }
