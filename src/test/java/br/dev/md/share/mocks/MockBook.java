@@ -23,6 +23,7 @@ public class MockBook {
         for (int i = 0; i < 14; i++) {
             books.add(mockEntity(i));
         }
+        
         return books;
     }
 
@@ -31,6 +32,7 @@ public class MockBook {
         for (int i = 0; i < 14; i++) {
             books.add(mockDTO(i));
         }
+        
         return books;
     }
 
@@ -41,6 +43,7 @@ public class MockBook {
         book.setLaunchDate(new Date());
         book.setPrice(25D);
         book.setTitle("Some Title" + number);
+        
         return book;
     }
 
@@ -51,6 +54,7 @@ public class MockBook {
         book.setLaunchDate(new Date());
         book.setPrice(25D);
         book.setTitle("Some Title" + number);
+        
         return book;
     }
 

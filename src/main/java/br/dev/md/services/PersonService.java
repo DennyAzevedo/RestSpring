@@ -39,9 +39,8 @@ public class PersonService {
 
     public PersonDTO findById(Long id){
         logger.info("Finding one Person!");
-        
         var entity =  personRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
+            .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
         var dto = parseObject(entity, PersonDTO.class);
         addHateoasLinks(dto);
 
@@ -50,6 +49,7 @@ public class PersonService {
 
     public PersonDTO create(PersonDTO person){
         if (person == null) throw new RequiredObjectIsNullException();
+        
         logger.info("Creating one Person!");
         var entity = parseObject(person, Person.class);
         var dto = parseObject(personRepository.save(entity), PersonDTO.class);
@@ -68,6 +68,7 @@ public class PersonService {
 
     public PersonDTO update(PersonDTO person){
         if (person == null) throw new RequiredObjectIsNullException();
+        
         logger.info("Updating one Person!");
         Person entity = personRepository.findById(person.getId())
             .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
@@ -75,7 +76,6 @@ public class PersonService {
         entity.setLastName(person.getLastName());
         entity.setAddress(person.getAddress());
         entity.setGender(person.getGender());
-        
         var dto = parseObject(personRepository.save(entity), PersonDTO.class);
         addHateoasLinks(dto);
         

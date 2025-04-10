@@ -59,6 +59,7 @@ public class PersonController implements PersonControllerDocs {
     @Override
     public ResponseEntity<PersonDTO> create(@RequestBody PersonDTO person) {
         PersonDTO createPerson = personService.create(person);
+        
         return ResponseEntity.status(201).body(createPerson);
     }
 /*
@@ -104,6 +105,7 @@ public class PersonController implements PersonControllerDocs {
         @PathVariable("id") Long id
     ) {
         personService.delete(id);
+        
         return ResponseEntity.noContent().build();
     }
 }
