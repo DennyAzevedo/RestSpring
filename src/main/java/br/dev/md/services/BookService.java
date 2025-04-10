@@ -23,37 +23,34 @@ public class BookService {
     private Logger logger = LoggerFactory.getLogger(BookService.class.getName());
 
     @Autowired
-    BookRepository repository;
+    BookRepository bookRepository;
 
 
     public List<BookDTO> findAll() {
-
         logger.info("Finding all Book!");
-
-        var books = parseListObjects(repository.findAll(), BookDTO.class);
+        var books = parseListObjects(bookRepository.findAll(), BookDTO.class);
         books.forEach(this::addHateoasLinks);
+        
         return books;
     }
 
     public BookDTO findById(Long id) {
         logger.info("Finding one Book!");
-
-        var entity = repository.findById(id)
+        var entity = bookRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
         var dto =  parseObject(entity, BookDTO.class);
         addHateoasLinks(dto);
+
         return dto;
     }
 
     public BookDTO create(BookDTO book) {
-
         if (book == null) throw new RequiredObjectIsNullException();
-
         logger.info("Creating one Book!");
         var entity = parseObject(book, Book.class);
-
-        var dto = parseObject(repository.save(entity), BookDTO.class);
+        var dto = parseObject(bookRepository.save(entity), BookDTO.class);
         addHateoasLinks(dto);
+
         return dto;
     }
 
@@ -62,7 +59,7 @@ public class BookService {
         if (book == null) throw new RequiredObjectIsNullException();
 
         logger.info("Updating one Book!");
-        Book entity = repository.findById(book.getId())
+        Book entity = bookRepository.findById(book.getId())
             .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
 
         entity.setAuthor(book.getAuthor());
@@ -70,7 +67,7 @@ public class BookService {
         entity.setPrice(book.getPrice());
         entity.setTitle(book.getTitle());
 
-        var dto = parseObject(repository.save(entity), BookDTO.class);
+        var dto = parseObject(bookRepository.save(entity), BookDTO.class);
         addHateoasLinks(dto);
         return dto;
     }
@@ -79,9 +76,9 @@ public class BookService {
 
         logger.info("Deleting one Book!");
 
-        Book entity = repository.findById(id)
+        Book entity = bookRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
-        repository.delete(entity);
+        bookRepository.delete(entity);
     }
 
     private void addHateoasLinks(BookDTO dto) {
